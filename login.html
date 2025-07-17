@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Acceso a Proyecto FE</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f2f7fb;
+      text-align: center;
+      margin: 0;
+      padding-top: 60px;
+    }
+    .box {
+      background-color: white;
+      padding: 40px;
+      border-radius: 10px;
+      display: inline-block;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    img {
+      max-width: 550px;
+      margin-bottom: 0px;
+    }
+    select, input, button {
+      padding: 10px;
+      margin: 8px;
+      font-size: 16px;
+      width: 80%;
+      max-width: 300px;
+    }
+    button {
+      background-color: #007acc;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    h2 {
+      margin-bottom: 10px;
+      color: #004080;
+    }
+    p#mensaje {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <img src="CINTA FE.png" alt="Logo Proyecto FE">
+    <h1>BIENVENIDO AL PROYECTO F.E</h1>
+    <h2>Control de Evaluaciones</h2>
+    <p>Selecciona tu nombre e ingresa tu contraseña para continuar</p>
+
+    <select id="usuario">
+      <option value="">-- Selecciona tu nombre --</option>
+      <option value="angel">Angel Rafael Montilla</option>
+      <option value="rosangela">Rosangela Cuero</option>
+    </select><br>
+
+    <input type="password" id="clave" placeholder="Contraseña"><br>
+    <button onclick="verificar()">Ingresar</button>
+    <p id="mensaje"></p>
+  </div>
+
+  <script>
+    function verificar() {
+      const usuario = document.getElementById("usuario").value;
+      const clave = document.getElementById("clave").value;
+
+      const credenciales = {
+        "angel": { pass: "12277960", link: "https://forms.gle/aCZnNF68rQ45UVox8" },
+        "rosangela": { pass: "28227753", link: "https://forms.gle/1WQsh4ukpjMjn2fh6" }
+      };
+
+      if (!usuario) {
+        document.getElementById("mensaje").textContent = "Por favor selecciona un usuario.";
+        return;
+      }
+
+      if (clave === credenciales[usuario].pass) {
+        window.location.href = credenciales[usuario].link;
+      } else {
+        document.getElementById("mensaje").textContent = "Contraseña incorrecta.";
+      }
+    }
+  </script>
+</body>
+</html>
